@@ -1,5 +1,21 @@
 pragma solidity ^0.4.17;
 
+//maintain security and easily keep track of all deployed contracts
+contract CampaignFactory {
+
+    address[] public deployedCampaigns;
+
+    function createCampaign(uint minimum) public {
+        address newDeployedAddress = new Campaign(minimum,msg.sender);
+        deployedCampaigns.push(newDeployedAddress);
+    }
+
+    function getDeployedCampaigns() public view returns (address[]){
+        return deployedCampaigns;
+    }
+
+}
+
 //variables ;- manager address , minimumLimit ,approvers address array and request structs(vendor address)
 
 //Functions/methods :- Campaign(constructor to set manager and minimumlimit), createRequest (for creating request for money),approvalRequest (called by contributors to approve)
@@ -35,9 +51,9 @@ contract Campaign{
         _;
     }
 
-    function Campaign(uint minimum) public{
+    function Campaign(uint minimum , address creator) public{
 
-        manager = msg.sender;
+        manager = creator;
         minimumContribution = minimum;
 
     }
@@ -124,3 +140,13 @@ int [] memory temp=array;
 ---> in this a new copy of array is created and temp points to the copy
 array just like call by value 
 */
+
+/*
+Adding a new Contract "Factory" which will be used to deploy the
+"campaign" contract and store the addresses of the deployed contracts 
+
+VAriable  : DeployedCampaigns -> store the address of deployed contracts
+Functions : 1) createCampaign -> deploys a new instance of the Campaign and stores the deployed address
+            2) getDeployedCampaigns -> returns a list of all deployed contracts 
+*/
+
