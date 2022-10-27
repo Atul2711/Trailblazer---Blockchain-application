@@ -1,30 +1,40 @@
 import React, { useState } from 'react'
 import Headers from '../../components/header'
-import { Form, Button, Input, Label } from 'semantic-ui-react'
+import { Form, Button, Input, Message } from 'semantic-ui-react'
 import factory from '../../trailblazers/factory';
 import web3 from '../../trailblazers/web3';
-
+import { Router } from '../../routes';
 
 export default function newcampaign() {
 
-
+  const [error,setError] = useState('');
+  const [flag,setFlag] = useState(false);
 
   const [amount, setAmount] = useState('');
   const handleChange = (event) => {
     setAmount(event.target.value);
   }
 
-  const handleSubmit=async(event)=>{
+  const handleSubmit = async (event) => {
     event.preventDefault(); //used to prevent browser will automatically submit the form to backend server
     //Create a new instance using factory contract
-    
+    setFlag(true);
+    setError('');
+    try {
       const accounts = await web3.eth.getAccounts();
       await factory.methods.createCampaign(amount)
-      .send({
-        from:accounts[0]
-        //gas:metamask will automatically calculate gas value
-      })
-    
+        .send({
+          from: accounts[0]
+          //gas:metamask will automatically calculate gas value
+        });
+      
+      Router.pushRoute('/');
+    } 
+    catch (err) {
+      setError(err.message)
+    }
+    setFlag(false);
+
   }
 
   return (
@@ -40,10 +50,11 @@ export default function newcampaign() {
           <h1>Create a new Campaign</h1>
 
 
-          <Form 
-          onSubmit={handleSubmit}
-          unstackable 
-          style={{
+          <Form
+            error={!!error}
+            onSubmit={handleSubmit}
+            unstackable
+            style={{
               backgroundColor: 'teal',
               color: 'white'
             }}
@@ -65,7 +76,11 @@ export default function newcampaign() {
               <Form.Checkbox style={{ color: 'white' }} required />
               <label>I agree to the Terms and Conditions</label>
             </Form.Field>
-            <Button type='submit'>Create</Button>
+            <Button loading={flag}  type='submit'>Create</Button>
+            
+            <Message error header='Oops!' content={error} />
+              
+           
           </Form>
         </div>
 

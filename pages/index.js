@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {Link } from '../routes';
 
 import web3 from '../trailblazers/web3';
 import factory from '../trailblazers/factory';
@@ -29,7 +30,7 @@ export default function index() {
     return {
       header: ele,
       description: 'View Campaign',
-      href: '#',
+      href: `/campaigns/${ele}`,
       fluid: true
     };
 

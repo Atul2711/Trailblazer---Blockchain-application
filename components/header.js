@@ -26,22 +26,21 @@ export default function header(props) {
           <img src='' />
         </Menu.Item>
         <Link href='/'>
-          <Menu.Item ><h2>TrailBlazers</h2></Menu.Item>
+          <a className='item'><h2>TrailBlazers</h2></a>
         </Link>
-        <Link href='/campaigns/new'>
-          <Menu.Item position='right'>
-            <h3>Create Campaign  <Icon name='plus circle' />
-            </h3>
-          </Menu.Item>
-
-        </Link>
+        <Menu.Item position='right'>
+          <Link href='/campaigns/new'>
+            <a className='item'> <h3>Create Campaign  <Icon name='plus circle' />
+            </h3></a>
+          </Link>
+        </Menu.Item>
       </Menu>
-    <Container>
-      {props.children}
-    </Container>
+      <Container>
+        {props.children}
+      </Container>
       <div style={footerStyle}>
         <h4>Designed by Atul Pandit &#169; {date} </h4>
       </div>
-      </>
+    </>
   )
 }
