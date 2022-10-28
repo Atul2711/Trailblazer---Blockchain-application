@@ -21,7 +21,12 @@ export default function header(props) {
 
   return (
     <>
-      <Menu stackable >
+      <Menu stackable  style={{
+        position:'sticky',
+        top:'0',
+        zIndex:'1'
+
+      }}>
         <Menu.Item>
           <img src='' />
         </Menu.Item>
@@ -38,6 +43,9 @@ export default function header(props) {
       <Container>
         {props.children}
       </Container>
+      
+      
+
       <div style={footerStyle}>
         <h4>Designed by Atul Pandit &#169; {date} </h4>
       </div>

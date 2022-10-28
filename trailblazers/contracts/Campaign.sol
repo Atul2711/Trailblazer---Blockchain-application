@@ -24,9 +24,9 @@ contract CampaignFactory {
 contract Campaign{
 
     struct Request{
-        string description;
-        uint value ;
-        address recipient;
+        string  description;
+        uint  value ;
+        address  recipient;
         bool complete;
         uint approvalCount;
         mapping (address => bool) approvals;

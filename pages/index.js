@@ -31,7 +31,8 @@ export default function index() {
       header: ele,
       description: 'View Campaign',
       href: `/campaigns/${ele}`,
-      fluid: true
+      fluid: true,
+      color:'teal'
     };
 
   });
