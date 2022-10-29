@@ -1,5 +1,5 @@
 # Trailblazer
-## Trailblazer is a decentralized crowd funding application where a user can start fundraising for  his/her creative projects, where anyone can contribute to bring the project to life and the user can only wihtdraw money with the approval of the contributors who have contributed to the campaign and after successfull approval user can send that money to the shopkeepers or the materials provider of the project.Trailblazer platform is built for ambitious,innovative and imaginative projects which can be brought to life through the support of the other peoples.
+### Trailblazer is a decentralized crowd funding application where a user can start fundraising for  his/her creative projects, where anyone can contribute to bring the project to life and the user can only wihtdraw money with the approval of the contributors who have contributed to the campaign and after successfull approval user can send that money to the shopkeepers or the materials provider of the project.Trailblazer platform is built for ambitious,innovative and imaginative projects which can be brought to life through the support of the other peoples.
 
 ## Flow of Application :
 * User can create a Campaign and user will be marked as owner.
@@ -17,13 +17,13 @@
 
 ## How to run:
 * Install all modules
-npm install
+$ npm install
 * Compile contract
-node compile.js
+$ node compile.js
 * Run some tests
-npm run test
+$ npm run test
 *Deploy contract
-node deploy.js
+$ node deploy.js
 *Run Next.js frontend
-npm run dev
+$ npm run dev
 
