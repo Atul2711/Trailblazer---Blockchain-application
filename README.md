@@ -28,11 +28,11 @@ node compile.js
 ```
 npm run test
 ```
-*Deploy contract
+* Deploy contract
 ```
  node deploy.js
  ```
-*Run Next.js frontend
+* Run Next.js frontend
 ```
 npm run dev
 ```
